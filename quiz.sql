@@ -16,6 +16,38 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+<<<<<<< HEAD
+=======
+-- Table structure for table `AnswerBank`
+--
+CREATE Database quiz_db;
+use quiz_db;
+DROP TABLE IF EXISTS `AnswerBank`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `AnswerBank` (
+  `ansId` int(10) NOT NULL AUTO_INCREMENT,
+  `QusId` int(11) DEFAULT NULL,
+  `Options` varchar(50) DEFAULT NULL,
+  `Answer` varchar(50) DEFAULT NULL,
+  `active` int(1) DEFAULT NULL,
+  PRIMARY KEY (`ansId`),
+  KEY `QusId` (`QusId`),
+  CONSTRAINT `AnswerBank_ibfk_1` FOREIGN KEY (`QusId`) REFERENCES `questionBank` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `AnswerBank`
+--
+
+LOCK TABLES `AnswerBank` WRITE;
+/*!40000 ALTER TABLE `AnswerBank` DISABLE KEYS */;
+/*!40000 ALTER TABLE `AnswerBank` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+>>>>>>> 2b088ad1b28345979bc8e7ed333033d8cb86a976
 -- Table structure for table `questionBank`
 --
 

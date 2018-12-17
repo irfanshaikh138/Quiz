@@ -6,12 +6,13 @@
 
 <style>
     .setField {
-        /* padding: 16px; */
+        padding: 16px;
         background-color: whitesmoke;
-        /* box-sizing: border-box; */
-        font-family: Arial, Helvetica, sans-serif;
+        box-sizing: border-box;
+        /* font-family: Arial, Helvetica, sans-serif; */
         border: 1px solid black;
-    }
+        margin: 6.5% 2% 0% 2%;
+        }
 
     nav ul li {
         border-style: none;
@@ -20,7 +21,7 @@
         font-weight: bold;
         align-content: center;
         float: left;
-        width: 5%;
+        width: 10%;
     }
 
     nav ul {
@@ -35,7 +36,7 @@
         font-family: 'monospace';
         align-content: center;
         float: left;
-        width: 81%;
+        width: 75%;
     }
 
     header {
@@ -57,41 +58,71 @@
         display: inline;
         opacity: 0.9;
     }
-    select{
-        background-color:blueviolet
+    .select{
+        background-color:dimgray;
+        margin-right: 20%;
     }
+
+    .submitbtn {
+            
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            margin-left: 80%;
+            bottom: 0%;
+            border: none;
+            cursor: pointer;
+            display: inline;
+            opacity: 0.9;
+            position: fixed ;
+            padding: 1% 1% 1% 1%;
+            /* background-color: gray; */
+    } 
 
    
 </style>
 
 <body>
+
+    <header>
+        <nav>
+            <ul style="list-style-type: none">
+                <li>Home</li>
+                <li>
+                    <a class=lo href="profile.html" id="usernm"></a> </li>
+                <li>
+
+                    <select class="select" id="subject" onchange="fetchQuestion(this);">
+                        <option value="sub">Select Subject</option>
+                        <option value="js">JavaScript</option>
+                        <option value="node">Node js</option>
+                        <option value="apti">Aptitude</option>
+                    </select>
+                </li>
+                <li>
+                    <a class="logOutBtn" href="login.html"> LogOut</a>
+                </li>
+            </ul>
+            <br>
+        </nav>
+    </header>
+
+    <div class="setField" id="queBody" >
+        
+ 
+        </div>
+
     
-        <header>
-            <nav>
-                <ul style="list-style-type: none">
-                    <li>Home</li>
-                    <li>
-                        <a class=lo href="profile.html" id="usernm"></a> </li>
-                    <li>
-                            
-                      <select>
-                            <option value="gk">GK</option>
-                            <option value="js">JavaScript</option>
-                            <option value="node">Node js</option>
-                            <option value="apti">Aptitude</option>
-                        </select>
-                    </li>
-                    <li>
-                        <a class="logOutBtn" href="login.html"> LogOut</a>
-                    </li>
-                </ul>
-                <br>
-            </nav>
-        </header>
- <div class="setField">
-cgdsfdsgfyfgsdyf
- </div>
+    <div class="submitbtn">
+        <input type="button" value="Submit" style="float:center">
+    </div>
+    <script type="text/javascript" src="main.js"> 
     
+        
+    
+    
+    </script>
+
 
 </body>
 
