@@ -18,7 +18,8 @@
 --
 -- Table structure for table `AnswerBank`
 --
-
+CREATE Database quiz_db;
+use quiz_db;
 DROP TABLE IF EXISTS `AnswerBank`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
