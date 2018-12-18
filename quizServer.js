@@ -66,12 +66,14 @@ http.createServer((request, response) => {
             response.writeHead(200, { 'Content-type': 'application/json' });
             request.on('data', (data) => {
                 let numberset = "";
-                for (i = 0; i < 10; i++) {
+                randomNoGen: for (i = 0; i < 10; i++) {
                     while (1) {
-                        let temp = Math.floor(Math.random() * 20) + 1 + ',';
-
+                        let temp = Math.floor(Math.random() * 20) + 1;
+                        if (data == 'gk') {
+                            temp += 20;
+                        }
                         if (!(numberset.includes(temp))) {
-                            numberset += temp;
+                            numberset += (temp + ',');
                             break;
                         }
                     }

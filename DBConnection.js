@@ -40,7 +40,7 @@ let selectStatement = (username, cb) => {
 
 let fetchQuestion = (subject, Qid, callback) => {
     let sql = `select questions,a,b,c,d,ans from questionBank where Subject = '${subject}' and id in (${Qid})`;
-    
+    console.log(sql);
     con.query(sql, function (err, result) {
         if (err) throw err;
         callback(result);
