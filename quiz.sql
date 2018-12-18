@@ -16,8 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
-<<<<<<< HEAD
-=======
 -- Table structure for table `AnswerBank`
 --
 CREATE Database quiz_db;
@@ -47,7 +45,6 @@ LOCK TABLES `AnswerBank` WRITE;
 UNLOCK TABLES;
 
 --
->>>>>>> 2b088ad1b28345979bc8e7ed333033d8cb86a976
 -- Table structure for table `questionBank`
 --
 
