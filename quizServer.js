@@ -67,20 +67,18 @@ http.createServer((request, response) => {
             request.on('data', (data) => {
                 let numberset = "";
                 for (i = 0; i < 10; i++) {
-                    while(1){
-                    let temp = Math.floor(Math.random() * 20) + 1 +',';
-                  
-                    if(!(numberset.includes(temp))){
-                    numberset += temp;
-                    break;
-                    } 
-                }
-            }
-               numberset = numberset.slice(0, -1);
+                    while (1) {
+                        let temp = Math.floor(Math.random() * 20) + 1 + ',';
 
-                console.log("jjjj      " + numberset);
-                 db.fetchQuestion(data, numberset, function (result) {
-                     let resultset=JSON.stringify(result);
+                        if (!(numberset.includes(temp))) {
+                            numberset += temp;
+                            break;
+                        }
+                    }
+                }
+                numberset = numberset.slice(0, -1);
+                db.fetchQuestion(data, numberset, function (result) {
+                    let resultset = JSON.stringify(result);
                     response.write(resultset);
                     response.end();
                 });
