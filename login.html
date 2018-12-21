@@ -34,14 +34,14 @@
         }
 
         fieldset {
-            height: 50vh;
+            height: 60vh;
             width: 50vh;
             padding: 3% 20% 0% 20%;
             margin: 10% 10% 0% 10%;
         }
 
         body {
-            background-image: linear-gradient(to bottom, gray 20%, whitesmoke);
+            background-image: radial-gradient(rgb(209, 207, 207), whitesmoke);
             font-size: 1.5em;
         }
     </style>
@@ -51,12 +51,13 @@
     <form>
         <fieldset>
             <legend>Enter Credentials </legend>
-            <p><label for="username">Username: </label> <input type="text" name="username" id="username" required></p>
+            <p><label for="username">Username: </label> <input type="text" name="username" id="username" autocomplete="Off"
+                    required></p>
             <p><label for="password">Password: </label> <input type="password" name="password" id="password" required></p>
-            <p><input type="button" value="Log In" onclick="validate();">
-                <p style="font-size:1em;font-family:'Times new roman';">
-                    New User? <a href="register.html">Register Here</a>.
-                </p>
+            <p><input type="button" value="Log In" onclick="validate();"></p>
+            <p style="font-size:1em;font-family:'Times new roman';">
+                New User? <a href="register.html">Register Here</a>.
+            </p>
         </fieldset>
     </form>
     <script type="text/javascript">

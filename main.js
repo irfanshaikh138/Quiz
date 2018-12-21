@@ -1,10 +1,14 @@
 var result;
-
+var int;
 
 function fetchQuestion(subjectId) {
     let msg = confirm("Would you like to start a quiz???");
     if (msg == true) {
         subjectId.style.display = 'none';
+        let buttonid = document.getElementById("buttonid");
+        buttonid.style.display = 'block';
+        let queBody = document.getElementById("queBody");
+        queBody.style.display = 'block';
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '/subjectId', true);
         xhr.setRequestHeader("Content-Type", "text/plain");
@@ -13,7 +17,7 @@ function fetchQuestion(subjectId) {
                 // console.log("got outputtt");
                 result = JSON.parse(xhr.response);
                 let queBody = document.getElementById("queBody");
-
+                queBody.innerHTML = "";
                 for (queNo = 1; queNo <= 10; queNo++) {
                     let que = document.createElement("div");
                     que.id = `q${queNo}`;
@@ -51,27 +55,34 @@ function fetchQuestion(subjectId) {
                     label4.appendChild(document.createTextNode(`${result[queNo - 1].d}`));
 
                     que.innerText = queNo + ")" + result[queNo - 1].questions;
+                    que.appendChild(document.createElement("br"));
                     que.appendChild(label1);
+                    que.appendChild(document.createElement("br"));
                     que.appendChild(label2);
+                    que.appendChild(document.createElement("br"));
                     que.appendChild(label3);
+                    que.appendChild(document.createElement("br"));
                     que.appendChild(label4);
                     que.appendChild(document.createElement("hr"));
                     queBody.appendChild(que);
 
+
                 }
                 let timer = document.getElementById("timer");
+                timer.style.display = 'block';
                 let clock = 10;
                 timer.innerText = clock;
-                let int = setInterval(() => {
-                    if (clock < 0) {
+                int = setInterval(() => {
+                    if (clock == 0) {
                         timer.style.display = 'none';
                         showResults();
-                        clearInterval(int);
                     }
                     timer.innerText = --clock;
 
                 }, 60000);
             }
+            let imageid = document.getElementById("imageid");
+            imageid.style.display = 'none';
         }
         xhr.send(subjectId.value);
     }
@@ -82,18 +93,25 @@ function fetchQuestion(subjectId) {
 }
 function showResults() {
     let count = 0;
+    clearInterval(int);
+    let timer = document.getElementById("timer");
+    timer.style.display = 'none';
     for (i = 1; i <= 10; i++) {
-        let res = document.querySelector(`input[name="q${i}"]:checked`).value;
-        if (result[i - 1].ans == res) {
+        let res = document.querySelector(`input[name="q${i}"]:checked`);
+        if (res == null) { continue; }
+        if (result[i - 1].ans == res.value) {
             count++;
         }
-
-
     }
     let subjectId = document.getElementById("subject");
     subjectId.style.display = 'block';
     let index = subjectId.selectedIndex;
     subjectId.options[index].disabled = true;
     subjectId.selectedIndex = 0;
+    alert("Time Up");
     alert("Your Score is:" + count);
+    let queBody = document.getElementById("queBody");
+    queBody.style.display = 'none';
+    let buttonid = document.getElementById("buttonid");
+        buttonid.style.display = 'none';
 }

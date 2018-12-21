@@ -14,7 +14,6 @@ function getResponse(response, filename, filetype) {
 http.createServer((request, response) => {
     let filename = './login.html';
     let filetype = 'text/html';
-    console.log(request.url)
     if (request.url.includes('.html')) {
         filename = `.${request.url}`; //'.'+request.url
     }
@@ -26,7 +25,10 @@ http.createServer((request, response) => {
         filename = `.${request.url}`;
         filetype = `text/javascript`;
     }
-
+    else if (request.url.includes('.svg')) {
+        filename = `.${request.url}`;
+        filetype = `image/svg+xml`;
+    }
     switch (request.url) {
         case '/valReq': response.writeHead(200, { 'Content-type': 'text/javascript' });
             request.on('data', (data) => {
@@ -65,22 +67,25 @@ http.createServer((request, response) => {
 
             response.writeHead(200, { 'Content-type': 'application/json' });
             request.on('data', (data) => {
-                let numberset = "";
-                randomNoGen: for (i = 0; i < 10; i++) {
-                    while (1) {
-                        let temp = Math.floor(Math.random() * 20) + 1;
-                        if (data == 'gk') {
-                            temp += 20;
-                        }
-                        if (!(numberset.includes(temp))) {
-                            numberset += (temp + ',');
-                            break;
+                db.fetchQuestion(data, function (result) {
+                    let numberset = [];
+                    let len = result.length;
+                    randomNoGen: for (i = 0; i < 10; i++) {
+                        while (1) {
+                            let temp = Math.floor(Math.random() * len) + 1;
+
+                            if (!(numberset.includes(temp))) {
+                                numberset.push(temp);
+                                break;
+                            }
                         }
                     }
-                }
-                numberset = numberset.slice(0, -1);
-                db.fetchQuestion(data, numberset, function (result) {
-                    let resultset = JSON.stringify(result);
+                    for (i = 0; i < 10; i++) {
+                        let index = numberset[i];
+                        numberset[i] = result[index-1];
+
+                    }
+                    let resultset = JSON.stringify(numberset);
                     response.write(resultset);
                     response.end();
                 });
