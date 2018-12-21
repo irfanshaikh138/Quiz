@@ -74,6 +74,7 @@ function fetchQuestion(subjectId) {
                 timer.innerText = clock;
                 int = setInterval(() => {
                     if (clock == 0) {
+                        alert("Time Up");
                         timer.style.display = 'none';
                         showResults();
                     }
@@ -108,10 +109,9 @@ function showResults() {
     let index = subjectId.selectedIndex;
     subjectId.options[index].disabled = true;
     subjectId.selectedIndex = 0;
-    alert("Time Up");
     alert("Your Score is:" + count);
     let queBody = document.getElementById("queBody");
     queBody.style.display = 'none';
     let buttonid = document.getElementById("buttonid");
-        buttonid.style.display = 'none';
+    buttonid.style.display = 'none';
 }
