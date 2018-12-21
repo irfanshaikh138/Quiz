@@ -12,6 +12,7 @@
         /* font-family: Arial, Helvetica, sans-serif; */
         border: 1px solid black;
         margin: 6.5% 2% 0% 2%;
+      
         }
 
     nav ul li {
@@ -19,14 +20,11 @@
         font-size: 20px;
         font-family: Impact;
         font-weight: bold;
-        align-content: center;
         float: left;
-        width: 10%;
+        width: 15%;
     }
 
     nav ul {
-        padding: 0% 1% 1% 1%;
-
         color: darkcyan;
     }
 
@@ -34,9 +32,8 @@
         border-style: none;
         font-size: 22px;
         font-family: 'monospace';
-        align-content: center;
         float: left;
-        width: 75%;
+        width: 70%;
     }
 
     header {
@@ -44,40 +41,47 @@
         top: 0;
         background-color: lightblue;
         width: 100%;
+        padding: 1%;
     }
 
     .logOutBtn {
 
-        color: blueviolet;
+        
         font-size: 1em;
         font-weight: bold;
-        padding: 1% 4% 1% 4%;
-        margin: 1% 40% 0% 40%;
         border: none;
         cursor: pointer;
-        display: inline;
-        opacity: 0.9;
-    }
+       }
     .select{
-        background-color:dimgray;
-        margin-right: 20%;
+        font-size: 0.8em;
+        padding: 1%;
+        background-color:rgb(238, 236, 236);
     }
 
     .submitbtn {
             
-            color: white;
+            color: darkcyan;
             font-size: 1em;
             font-weight: bold;
-            margin-left: 80%;
             bottom: 0%;
             border: none;
             cursor: pointer;
-            display: inline;
             opacity: 0.9;
-            position: fixed ;
-            padding: 1% 1% 1% 1%;
-            /* background-color: gray; */
+            margin: 1% 47%;
+            padding: 1% 4% 1% 4%;
+            
     } 
+    #exit {
+            font-family: 'Arial Narrow Bold';
+            font-size: 1em;
+            font-weight: bold;
+            background: url("logout.svg");
+            background-repeat: no-repeat;
+        }
+    a:link {
+    color:rgb(139, 235, 139);
+    text-decoration: none;
+  }
 
    
 </style>
@@ -91,7 +95,7 @@
                 <li>
                     <a class=lo href="profile.html" id="usernm"></a> </li>
                 <li>
-                    <label id="timer">  </label>
+                    <label id="timer"> </label>
                 </li>
                 <li>
 
@@ -104,22 +108,27 @@
                 </li>
 
                 <li>
-                    <a class="logOutBtn" href="login.html"> LogOut</a>
+                    <a class="logOutBtn" href="login.html"><input type="button" value="    Logout" id="exit">
+                    </a>
                 </li>
             </ul>
             <br>
         </nav>
     </header>
+   
+    <div style="overflow: hidden;height: 95vh;" id="imageid" >
+            <input type="image" src="quizpic.svg" alt="Submit" width="100%" >  
+          </div>
+   
+          <div class="setField" id="queBody" style="display:none" >
 
-    <div class="setField" id="queBody">
-
+         
 
     </div>
-
-
-    <div class="submitbtn" >
-        <input type="button" value="Submit" onclick="showResults();" style="float:center">
-    </div>
+    
+    <p>
+        <input type="button" value="Submit" id="buttonid" onclick="showResults();" class="submitbtn" style="float:right; display:none;">
+    </p>
     <script type="text/javascript" src="main.js">
 
 
